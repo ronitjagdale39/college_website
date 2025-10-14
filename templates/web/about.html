@@ -1,14 +1,268 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>About Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - CollegeHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --background-color: #f4f7fc;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Header Animation --- */
+        .hero-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 0 0 50% 50% / 0 0 15% 15%;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .hero-header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* --- Section Styling and Scroll Animations --- */
+        .content-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            margin-bottom: 60px;
+        }
+
+        .content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* --- Team Section --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-card .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid transparent;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) border-box;
+            margin-bottom: 20px;
+        }
+        
+        .team-card h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        .team-card .role {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .team-card .social-links a {
+            color: #555;
+            font-size: 1.5em;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .team-card .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Back Button --- */
+        .home-link {
+            display: block;
+            width: fit-content;
+            margin: 40px auto 0;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .home-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* --- Keyframe Animations --- */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>About Our College</h1>
-    <p>This is the official about page for our college website.</p>
-    <p><a href="{% url 'resource_hub' %}">Back to Resource Hub</a></p>
+
+    <header class="hero-header">
+        <h1>About CollegeHub</h1>
+        <p>The minds behind your centralized academic library.</p>
+    </header>
+
+    <div class="container">
+        <section class="content-section" id="mission">
+            <h2>Our Mission 🎯</h2>
+            <p class="section-text">
+                Our goal is to break down barriers to academic success. We believe every student deserves easy access to quality study materials. CollegeHub was born from a desire to create a single, reliable, and community-driven platform to find previous year papers, notes, and e-books without the usual hassle.
+            </p>
+        </section>
+
+        <section class="content-section" id="team">
+            <h2>Meet The Team 🧑‍💻</h2>
+            <div class="team-grid">
+                
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/150" alt="Team Member Rony" class="avatar">
+                    <h2>Ronit Jagdale</h2>
+                    <p class="role">Project Lead & Backend Developer</p>
+                    <div class="social-links">
+                        <a href="https://github.com/ronitjagdale39" target="_blank" title="GitHub">GH</a>
+                        <a href="#" target="_blank" title="LinkedIn">IN</a>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/150" alt="Team Member" class="avatar">
+                    <h2>Rushikesh Jagtap</h2>
+                    <p class="role">Backend Developer</p>
+                    <div class="social-links">
+                         <a href="#" target="_blank" title="GitHub">GH</a>
+                        <a href="#" target="_blank" title="LinkedIn">IN</a>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                     <img src="https://via.placeholder.com/150" alt="Team Member" class="avatar">
+                    <h2>Chirayu Durgude</h2>
+                    <p class="role">Database Designer</p>
+                    <div class="social-links">
+                         <a href="#" target="_blank" title="GitHub">GH</a>
+                        <a href="#" target="_blank" title="LinkedIn">IN</a>
+                    </div>
+                </div>
+
+                     <div class="team-card">
+                     <img src="https://via.placeholder.com/150" alt="Team Member" class="avatar">
+                    <h2>Sahil Bobade</h2>
+                    <p class="role">UI/UX Designer</p>
+                    <div class="social-links">
+                         <a href="#" target="_blank" title="GitHub">GH</a>
+                        <a href="#" target="_blank" title="LinkedIn">IN</a>
+                    </div>
+                
+
+            </div>
+        </section>
+        
+        <a href="{% url 'resource_hub' %}" class="home-link">← Back to Resources</a>
+    </div>
+
+    <script>
+        // This JavaScript adds the 'visible' class to sections when they are scrolled into view
+        const sections = document.querySelectorAll('.content-section');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
 </body>
 </html>
- 
