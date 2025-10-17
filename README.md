@@ -1,1 +1,1 @@
-<h1> this is my first project</h1>
+<h1> this is out team mini project</h1>
