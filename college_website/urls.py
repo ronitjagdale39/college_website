@@ -24,6 +24,7 @@ urlpatterns = [
     path('',include('web.urls')),
     path('',include('web.urls')),
     path('web/',include('web.urls')),
+    path('Users/',include('web.urls')),
    
    
 ]

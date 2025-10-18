@@ -1,9 +1,10 @@
 # web/views.py
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-
+def Users(request):
+    return HttpResponse("users informations entred..")
 # Corrected Signup View
 def signup_view(request): # Renamed to standard Python convention (snake_case)
     if request.method == 'POST':
