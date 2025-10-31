@@ -67,5 +67,5 @@ def resource_hub(request):
     }
     
 
-    return render(request, 'web/index.html', context)
+    return render(request, 'web/home.html', context)
 
